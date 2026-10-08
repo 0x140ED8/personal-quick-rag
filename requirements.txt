@@ -1,0 +1,22 @@
+# rag conda 环境（Python 3.9）完整依赖清单
+# 安装命令：conda activate rag && pip install -r requirements.txt
+#
+# 解析（Docling）
+docling==2.69.1
+docling-ibm-models
+# 稀疏召回（BM25 + 中文分词）
+rank-bm25==0.2.2
+jieba==0.42.1
+# 向量化 / 存储 / 分片
+langchain==0.3.27
+langchain-community==0.3.29
+langchain-huggingface==0.3.1
+langchain-text-splitters==0.3.11
+faiss-cpu==1.11.0
+sentence-transformers
+# 重排 / 推理
+transformers
+torch
+# API 服务（main.py serve）
+fastapi
+uvicorn

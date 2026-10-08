@@ -1,0 +1,49 @@
+# 本文件由 POST /api/config 自动生成，原有注释已丢失。
+# 生成时间: 2026-10-08T22:21:47+08:00
+paths:
+  data_dir: D:\MyAPP\agent\pi-agent-server\data\knowledge-bases\kb-muzmk422-btvv\data
+  index_dir: D:\MyAPP\agent\pi-agent-server\data\knowledge-bases\kb-muzmk422-btvv\index
+  parsed_dir: D:\MyAPP\agent\pi-agent-server\data\knowledge-bases\kb-muzmk422-btvv\parsed
+parser:
+  name: docling
+  ocr: false
+  table_mode: fast
+  skip_toc: true
+  device: cuda
+  heading_patterns:
+  - regex: 第[一二三四五六七八九十百零〇0-9]+[卷]
+    level: 1
+  - regex: 第[一二三四五六七八九十百零〇0-9]+[部篇章节回]
+    level: 2
+chunker:
+  name: recursive
+  chunk_size: 500
+  chunk_overlap: 50
+embedder:
+  name: jasper
+  model_name: infgrad/Jasper-Token-Compression-600M
+  device: cuda
+  dtype: bfloat16
+  batch_size: 256
+  compression_ratio: 0.8
+store:
+  name: faiss
+  distance_strategy: MAX_INNER_PRODUCT
+retriever:
+  name: hybrid
+  dense_top_k: 20
+  sparse_top_k: 20
+  rrf_k: 60
+reranker:
+  name: bge
+  model_name: BAAI/bge-reranker-v2-m3
+  top_k: 5
+  device: cuda
+generator:
+  name: none
+server:
+  host: 127.0.0.1
+  port: 8100
+  cors_origins:
+  - '*'
+  warmup: true

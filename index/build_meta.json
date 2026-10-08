@@ -1,0 +1,5 @@
+{
+  "embedder_name": "jasper",
+  "embedder_model_name": "infgrad/Jasper-Token-Compression-600M",
+  "num_chunks": 992
+}
